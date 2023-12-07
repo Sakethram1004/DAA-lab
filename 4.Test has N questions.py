@@ -10,16 +10,16 @@ def merge_sort(l, low, high):
     mid = (low + high) // 2
     if low < high:
         merge_sort(l, low, mid)
-    merge_sort(l, mid + 1, high)
-    merge(l, low, high, mid)
+        merge_sort(l, mid + 1, high)
+        merge(l, low, high, mid)
     return l
 
 def knapsack(l, m):
     u, total = m, 0
-    vector = [1 if u - item.t > 0 else 0 for item in l]
+    vector = [0] * len(l)
     for i, item in enumerate(l):
         if u - item.t > 0:
-            item.x, u = 1, u - item.t
+            vector[i], item.x, u = 1, 1, u - item.t
         else:
             item.x = 0
             break
